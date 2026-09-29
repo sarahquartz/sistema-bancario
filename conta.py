@@ -1,6 +1,10 @@
 class Conta:
 
+    proximo_id = 1
+
     def __init__(self, titular, saldo):
+        self.id = Conta.proximo_id
+        Conta.proximo_id += 1
         self.titular = titular
         self.saldo = saldo
 
