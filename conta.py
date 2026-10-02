@@ -11,22 +11,26 @@ class Conta:
 
     def mostrar_saldo(self):
 
-        print(f"Saldo em conta: R$ {self.saldo}")
+        return f"Saldo em conta: R$ {self.saldo:.2f}"
 
     def depositar(self, valor):
-        if valor > 0:
-            self.saldo += valor
-            return self.saldo
-        else: 
-            return
+        
+        if valor <= 0:
+            return False
+
+        self.saldo += valor
+        return True
 
     def sacar(self, valor):
 
-        if valor > self.saldo and valor > 0:
+        if valor <= 0:
             return False
-        else:
-            self.saldo -= valor
-            return True
+
+        if valor > self.saldo:
+            return False
+        
+        self.saldo -= valor
+        return True
 
     def transferir(self, valor, destino):
 
