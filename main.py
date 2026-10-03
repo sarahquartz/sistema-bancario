@@ -1,7 +1,8 @@
 from conta import Conta
+from banco import Banco
 import os
 
-contas = []
+banco = Banco()
 
 def menu_principal():
     print("\n=== Sistema Bancario ===")
@@ -32,16 +33,18 @@ def pausar():
 def limpar_tela():
     os.system("clear")
 
-def criar_conta(contas):
+def criar_conta():
     titular = input("Digite o nome do titular: ")
-    conta = Conta(titular, 100)
-    contas.append(conta)
+    nova_conta = banco.criar_conta(titular)
     print("Conta Criada!")
 
-def exibir_contas(contas):
+def exibir_contas():
     print("================================")
-    for conta in contas:
-        print(f"id: {conta.id}, Titular: {conta.titular}, Saldo: {conta.saldo:.2f}")
+    if banco.listar_contas():
+        for conta in banco.contas:
+            print(f"id: {conta.id}, Titular: {conta.titular}, Saldo: {conta.saldo:.2f}")
+    else:
+        print("Nenhuma conta cadastrada!")
     print("================================")
 
 def saque(conta, valor):
@@ -73,13 +76,6 @@ def transferencia(origem, destino, valor):
 
     else:
         print("Ocorreu um Erro na Transferencia!")
-
-def buscar_conta(contas, id_conta):
-    for conta in contas:
-        if conta.id == id_conta:
-            return conta
-
-    return None
 
 
 
@@ -114,7 +110,7 @@ def conta_estado(conta):
             # Opção de Transferencia
             try:
                 destino_numero = int(input("Digite o Número da conta: "))
-                destino = buscar_conta(contas, destino_numero)
+                destino = banco.buscar_conta(destino_numero)
 
                 if destino is None:
                     print("Conta não encontrada!")
@@ -148,18 +144,18 @@ while True:
         break
 
     elif select == 1:
-        criar_conta(contas)
+        criar_conta()
         pausar()
 
     elif select == 2:
-        exibir_contas(contas)
+        exibir_contas()
         pausar()
 
     elif select == 3:
 
         try:
             conta_numero = int(input("Digite o número da conta:"))
-            conta = buscar_conta(contas, conta_numero)
+            conta = banco.buscar_conta(conta_numero)
             limpar_tela()
 
             if conta is None:
