@@ -1,6 +1,7 @@
 # Classe Banco
 
 from conta import Conta
+import json
 
 class Banco:
 
@@ -13,11 +14,10 @@ class Banco:
         return conta
 
     def listar_contas(self):
+        return self.contas
 
-        if not self.contas:
-            return False
-        
-        return True
+    def possui_contas(self):
+        return len(self.contas) > 0
 
     def buscar_conta(self, id_conta):
 
@@ -26,4 +26,33 @@ class Banco:
                 return conta
 
         return None
+
+    def salvar(self):
+
+        dados = []
+
+        for conta in self.contas:
+            dados.append(conta.para_dict())
+
+        with open("contas.json", "w", encoding="utf-8") as arquivo:
+            json.dump(dados, arquivo, indent=4, ensure_ascii=False)
+
+    def carregar(self):
+
+        try:
+            with open("contas.json", "r", encoding="utf-8") as arquivo:
+                dados = json.load(arquivo)
+
+            self.contas = []
+
+            for conta_dict in dados:
+                conta = Conta.de_dict(conta_dict)
+                self.contas.append(conta)
+
+            if self.contas:
+                maior_id = max(conta.id for conta in self.contas)
+                Conta.proximo_id = maior_id + 1
+
+        except FileNotFoundError:
+            pass
 

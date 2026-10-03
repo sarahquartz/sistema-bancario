@@ -3,6 +3,7 @@ from banco import Banco
 import os
 
 banco = Banco()
+banco.carregar()
 
 def menu_principal():
     print("\n=== Sistema Bancario ===")
@@ -36,12 +37,13 @@ def limpar_tela():
 def criar_conta():
     titular = input("Digite o nome do titular: ")
     nova_conta = banco.criar_conta(titular)
+    banco.salvar()
     print("Conta Criada!")
 
 def exibir_contas():
     print("================================")
-    if banco.listar_contas():
-        for conta in banco.contas:
+    if banco.possui_contas():
+        for conta in banco.listar_contas():
             print(f"id: {conta.id}, Titular: {conta.titular}, Saldo: {conta.saldo:.2f}")
     else:
         print("Nenhuma conta cadastrada!")
@@ -51,6 +53,7 @@ def saque(conta, valor):
 
     if conta.sacar(valor):
         print("\nSaque Efetuado:")
+        conta.salvar()
         print(f"Valor R$ {valor:.2f}")
         print(conta.mostrar_saldo())
     else:
@@ -60,6 +63,7 @@ def deposito(conta, valor):
 
     if conta.depositar(valor):
         print("\nDeposito Efetuado:")
+        conta.salvar()
         print(f"Valor R$ {valor:.2f}")
         print(conta.mostrar_saldo())
     else:
@@ -69,6 +73,7 @@ def transferencia(origem, destino, valor):
 
     if origem.transferir(valor, destino):
         print("\nTrasferencia Efetuada")
+        conta.salvar()
         print(f"Valor: R$ {valor:.2f}")
         print("Destino:")
         print(f"Conta: {destino.id:04}")

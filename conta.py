@@ -39,4 +39,15 @@ class Conta:
             return True
         else:
             return False
-            
+
+    def para_dict(self):
+        return {"id": self.id,
+                "titular": self.titular,
+                "saldo": self.saldo}
+
+    @classmethod
+    def de_dict(cls, dados):
+        conta = cls(dados["titular"], dados["saldo"])
+        conta.id = dados["id"]
+        return conta
+
