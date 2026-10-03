@@ -24,6 +24,7 @@ def menu_conta(conta):
     print("\n1 - Sacar")
     print("2 - Depositar")
     print("3 - Transferir")
+    print("4 - Exibir Extrato")
     print("0 - Voltar")
     
 
@@ -53,7 +54,7 @@ def saque(conta, valor):
 
     if conta.sacar(valor):
         print("\nSaque Efetuado:")
-        conta.salvar()
+        banco.salvar()
         print(f"Valor R$ {valor:.2f}")
         print(conta.mostrar_saldo())
     else:
@@ -63,7 +64,7 @@ def deposito(conta, valor):
 
     if conta.depositar(valor):
         print("\nDeposito Efetuado:")
-        conta.salvar()
+        banco.salvar()
         print(f"Valor R$ {valor:.2f}")
         print(conta.mostrar_saldo())
     else:
@@ -73,7 +74,7 @@ def transferencia(origem, destino, valor):
 
     if origem.transferir(valor, destino):
         print("\nTrasferencia Efetuada")
-        conta.salvar()
+        banco.salvar()
         print(f"Valor: R$ {valor:.2f}")
         print("Destino:")
         print(f"Conta: {destino.id:04}")
@@ -81,6 +82,16 @@ def transferencia(origem, destino, valor):
 
     else:
         print("Ocorreu um Erro na Transferencia!")
+
+def exibir_extrato(conta):
+    print("====EXTRATO====")
+    if len(conta.extrato) > 0:
+        for transação in conta.extrato:
+            print(transação)
+
+    else:
+        print("Não há transações!")
+    print("====EXTRATO====")
 
 
 
@@ -127,6 +138,11 @@ def conta_estado(conta):
                 print("Digite apenas números")
             except IndexError:
                 print("Conta Invalida!")
+            pausar()
+
+        elif select == 4:
+            limpar_tela()
+            exibir_extrato(conta)
             pausar()
 
         elif select == 0:
