@@ -10,6 +10,7 @@ def menu_principal():
     print("1 - Criar Conta")
     print("2 - Exibir Contas")
     print("3 - Selecionar Conta")
+    print("4 - Deletar Conta")
     print("0 - Sair")
     print("========================")
 
@@ -188,6 +189,19 @@ while True:
             print("Digite apenas números!")
         except IndexError:
             print("Conta Invalida")
+        pausar()
+
+    elif select == 4:
+        try:
+            conta_id = int(input("Digite o número da conta que deseja Deletar: "))
+        except ValueError:
+            print("Digite apenas números!")
+
+        if banco.deletar_conta(conta_id):
+            print("Conta Deletada!")
+            banco.salvar()
+        else:
+            print("Não foi possivel deletar a conta")
         pausar()
 
 

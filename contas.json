@@ -1,22 +1,8 @@
 [
     {
-        "id": 1,
+        "id": 3,
         "titular": "Sarah",
-        "saldo": 25.0,
-        "extrato": [
-            "Deposito: R$: 100.00",
-            "Saque: R$: 50.00",
-            "Saque: R$: 25.00",
-            "Transferencia Efetuada: R$: 25.00"
-        ]
-    },
-    {
-        "id": 2,
-        "titular": "Thiago",
-        "saldo": 25.0,
-        "extrato": [
-            "Deposito: R$: 25.00",
-            "Transferencia Recebida: R$: 25.00"
-        ]
+        "saldo": 0,
+        "extrato": []
     }
 ]

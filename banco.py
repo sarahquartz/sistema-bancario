@@ -13,6 +13,19 @@ class Banco:
         self.contas.append(conta)
         return conta
 
+    def deletar_conta(self, id_conta):
+
+        conta = self.buscar_conta(id_conta)
+
+        if conta is not None:
+            self.contas.remove(conta)
+            return True
+
+        if conta.saldo != 0:
+            return False
+
+        return False
+
     def listar_contas(self):
         return self.contas
 
