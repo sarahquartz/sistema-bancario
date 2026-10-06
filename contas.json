@@ -3,6 +3,8 @@
         "id": 3,
         "titular": "Sarah",
         "saldo": 1000.0,
+        "usuario": "sarah1",
+        "senha_hash": "iasduh",
         "extrato": [
             "[05/10/2026 23:11] Deposito: R$: 100.00",
             "[06/10/2026 13:31] Deposito: R$: 100.00",
@@ -28,14 +30,12 @@
     },
     {
         "id": 4,
-        "titular": "Thiago",
-        "saldo": 0,
-        "extrato": []
-    },
-    {
-        "id": 5,
-        "titular": "Arianne",
-        "saldo": 0,
-        "extrato": []
+        "titular": "Sarah",
+        "saldo": 410.0,
+        "usuario": "sarah",
+        "senha_hash": "scrypt:32768:8:1$N1A080AnPj44Owih$030bf1757f75b3f5f62fd7734e33fae740feb42f2c8464fafc242b53935becde021ba2ec2ec70dd3c3e2415cc02606fb02dc23cfc0c0d33468dcfaed6001ad16",
+        "extrato": [
+            "[06/10/2026 20:29] Deposito: R$: 410.00"
+        ]
     }
 ]

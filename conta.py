@@ -4,11 +4,13 @@ class Conta:
 
     proximo_id = 1
 
-    def __init__(self, titular, saldo):
+    def __init__(self, titular, usuario, senha_hash):
         self.id = Conta.proximo_id
         Conta.proximo_id += 1
         self.titular = titular
-        self.saldo = saldo
+        self.saldo = 0
+        self.usuario = usuario
+        self.senha_hash = senha_hash
         self.extrato = []
 
 
@@ -62,11 +64,14 @@ class Conta:
         return {"id": self.id,
                 "titular": self.titular,
                 "saldo": self.saldo,
+                "usuario": self.usuario,
+                "senha_hash": self.senha_hash,
                 "extrato": self.extrato}
 
     @classmethod
     def de_dict(cls, dados):
-        conta = cls(dados["titular"], dados["saldo"])
+        conta = cls(dados["titular"], dados["usuario"], dados["senha_hash"])
+        conta.saldo = dados["saldo"]
         conta.id = dados["id"]
         conta.extrato = dados["extrato"]
         return conta

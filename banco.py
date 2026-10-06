@@ -8,8 +8,8 @@ class Banco:
     def __init__(self):
         self.contas = []
 
-    def criar_conta(self, titular):
-        conta = Conta(titular, 0)
+    def criar_conta(self, titular, usuario, senha_hash):
+        conta = Conta(titular, usuario, senha_hash)
         self.contas.append(conta)
         return conta
 
@@ -36,6 +36,14 @@ class Banco:
 
         for conta in self.contas:
             if conta.id == id_conta:
+                return conta
+
+        return None
+
+    def buscar_conta_usuario(self, usuario):
+
+        for conta in self.contas:
+            if conta.usuario == usuario:
                 return conta
 
         return None

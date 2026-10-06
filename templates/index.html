@@ -3,4 +3,27 @@
 {% block content %}
         <h1>Sistema Bancário</h1>
         <p>Bem vindo ao Sistema!</p>
+
+        <div>
+                <h2>Loguin</h2>
+
+                <form method="post">
+
+                        <label>Usuario</label>
+                        <input type = "text" name="usuario" required>
+
+                        <label>Senha</label>
+                        <input type="text" name="senha" required>
+
+                        <button type="submit">Entrar</button>
+
+                </form>
+        </div>
+        {% with mensagens = get_flashed_messages() %}
+                {% if mensagens %}
+                        {% for mensagen in mensagens%}
+                        <p>{{mensagen}}</p>
+                        {%endfor%}
+                {%endif%}
+        {%endwith%}
 {% endblock %}
