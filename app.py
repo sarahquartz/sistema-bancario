@@ -35,6 +35,11 @@ def conta(id_conta):
     if conta is None:
         return "Conta não encontrada"
 
+    if request.method == "POST":
+        valor = float(request.form["valor"])
+        conta.depositar(valor)
+        banco.salvar()
+
     return render_template("conta.html", conta = conta)
 
 app.run(debug=True)

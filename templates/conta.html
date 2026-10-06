@@ -18,13 +18,13 @@
             </form>
         </div>
         <button>Sacar</button>
-        <button>Transferir</button>
+        <button onclick="window.location.reload()">Transferir</button>
     </div>
     <div>
         <p>Extrato</p>
         <div>
             {% for transacao in conta.extrato %}
-            {{transacao}}
+            <p>{{transacao}}</p>
             {% endfor %}
         </div>
     </div>
