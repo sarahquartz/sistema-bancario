@@ -14,5 +14,15 @@ body{
 
 .conta-funcoes-form{
     display: none;
-    padding: 20px;
+    margin: 15px;
+}
+
+.conta-funcoes-form h3{
+    margin: 5px;
+}
+
+.conta-funcoes-form form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

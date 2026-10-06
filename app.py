@@ -36,9 +36,17 @@ def conta(id_conta):
         return "Conta não encontrada"
 
     if request.method == "POST":
-        valor = float(request.form["valor"])
-        conta.depositar(valor)
-        banco.salvar()
+
+        try:
+            valor = float(request.form["valor"])
+            if valor > 0:
+                conta.depositar(valor)
+                banco.salvar()
+                return redirect(url_for("conta", id_conta = id_conta))
+            else:
+                return "Entrada Invalida"
+        except ValueError:
+            return "Entrada Invalida"
 
     return render_template("conta.html", conta = conta)
 

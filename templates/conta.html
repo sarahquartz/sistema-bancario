@@ -1,24 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Detahes da conta</h1>
-    <p>
-        Conta: {{conta.id}}
-        <br>
-        Titular: {{conta.titular}}
-        Saldo: {{conta.saldo}}
-        <br>
-    </p>
+
+    <p> Conta: {{"{:04}".format(conta.id)}}</p>
+    <p>Titular: {{conta.titular}}</p>
+    <p>Saldo: {{"{:.2f}".format(conta.saldo)}}</p>
+    
     <div class="conta-funcoes">
         <button onclick="mostrarDeposito()">Depositar</button>
+
         <div id="deposito-form" class="conta-funcoes-form">
+
             <h3>Deposito</h3>
+
             <form method="POST">
                 <input type="number" step="0.01" name="valor">
                 <button type="submit">Confirmar</button>
             </form>
+
         </div>
+
         <button>Sacar</button>
-        <button onclick="window.location.reload()">Transferir</button>
+        <button>Transferir</button>
     </div>
     <div>
         <p>Extrato</p>
@@ -30,8 +33,13 @@
     </div>
     <script>
         function mostrarDeposito(){
-            depositoForm = document.getElementById("deposito-form");
-            depositoForm.style.display = "block";
+            let formulario = document.getElementById("deposito-form");
+            let estilo = window.getComputedStyle(formulario)
+                if (estilo.display === "none"){
+                    formulario.style.display = "block";
+                }else{
+                    formulario.style.display = "none";
+                }
             }
 
     </script>
