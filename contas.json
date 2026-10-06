@@ -2,6 +2,20 @@
     {
         "id": 3,
         "titular": "Sarah",
+        "saldo": 100.0,
+        "extrato": [
+            "[05/10/2026 23:11] Deposito: R$: 100.00"
+        ]
+    },
+    {
+        "id": 4,
+        "titular": "Thiago",
+        "saldo": 0,
+        "extrato": []
+    },
+    {
+        "id": 5,
+        "titular": "Arianne",
         "saldo": 0,
         "extrato": []
     }

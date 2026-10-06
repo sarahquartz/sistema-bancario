@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Detahes da conta</h1>
+    <p>
+        Conta: {{conta.id}}
+        <br>
+        Titular: {{conta.titular}}
+        Saldo: {{conta.saldo}}
+        <br>
+    </p>
+    <div class="conta-funcoes">
+        <button onclick="mostrarDeposito()">Depositar</button>
+        <div id="deposito-form" class="conta-funcoes-form">
+            <h3>Deposito</h3>
+            <form method="POST">
+                <input type="number" step="0.01" name="valor">
+                <button type="submit">Confirmar</button>
+            </form>
+        </div>
+        <button>Sacar</button>
+        <button>Transferir</button>
+    </div>
+    <div>
+        <p>Extrato</p>
+        <div>
+            {% for transacao in conta.extrato %}
+            {{transacao}}
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        function mostrarDeposito(){
+            depositoForm = document.getElementById("deposito-form");
+            depositoForm.style.display = "block";
+            }
+
+    </script>
+{% endblock %}

@@ -1,0 +1,18 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 40px;
+    background-color:rgba(0, 0, 0, 0.842);
+    color: darkgoldenrod
+}
+
+.conta-funcoes{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    max-width: 200px;
+}
+
+.conta-funcoes-form{
+    display: none;
+    padding: 20px;
+}

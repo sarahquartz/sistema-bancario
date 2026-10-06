@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+        {% for conta in contas %}
+        <div>
+            <h2>Conta: {{conta.id}}</h2>
+            
+            <p>Titular: {{conta.titular}}</p>
+            
+            <p>Saldo: R$ {{conta.saldo}}</p>
+
+        </div>
+        <a href="{{url_for('conta', id_conta = conta.id)}}">Ver Conta</a>
+        {%endfor%}
+{% endblock %}
