@@ -50,4 +50,4 @@ def conta(id_conta):
 
     return render_template("conta.html", conta = conta)
 
-app.run(debug=True)
+app.run(host = '0.0.0.0', debug=True)
