@@ -55,9 +55,15 @@ def nova_conta():
         titular = request.form["titular"]
         usuario = request.form["usuario"]
         senha = request.form["senha"]
-        senha_hash = generate_password_hash(senha)
-        banco.criar_conta(titular, usuario, senha_hash)
-        banco.salvar()
+
+        if usuario != banco.buscar_conta_usuario(usuario).usuario:
+
+            senha_hash = generate_password_hash(senha)
+            banco.criar_conta(titular, usuario, senha_hash)
+            banco.salvar()
+        else:
+            flash("Nome de usuario já existe")
+            return redirect(url_for("inicio"))
 
         return redirect(url_for("inicio"))
 
