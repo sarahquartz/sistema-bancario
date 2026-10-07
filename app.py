@@ -56,7 +56,9 @@ def nova_conta():
         usuario = request.form["usuario"]
         senha = request.form["senha"]
 
-        if usuario != banco.buscar_conta_usuario(usuario).usuario:
+        usuario_verificar = banco.buscar_conta_usuario(usuario)
+
+        if usuario_verificar is None:
 
             senha_hash = generate_password_hash(senha)
             banco.criar_conta(titular, usuario, senha_hash)
@@ -79,16 +81,33 @@ def minha_conta():
 
     if request.method == "POST":
 
+        acao = request.form["acao"]
+
         try:
             valor = float(request.form["valor"])
             if valor > 0:
-                conta.depositar(valor)
-                banco.salvar()
-                return redirect(url_for("minha_conta"))
+                #validar a operação
+                if acao == "deposito":
+                    conta.depositar(valor)
+                    banco.salvar()
+                    return redirect(url_for("minha_conta"))
+                
+                elif acao == "saque":
+                    conta.sacar(valor)
+                    banco.salvar()
+                    return redirect(url_for("minha_conta"))
+                elif acao == "transferencia":
+                    destino_id = int(request.form["destino"])
+                    destino = banco.buscar_conta(destino_id)
+                    if destino is not None:
+                        conta.transferir(valor, destino)
+                        banco.salvar()
+                    else:
+                        flash("Conta invalida")
             else:
-                return "Entrada Invalida"
+                flash("Entrada Invalida")
         except ValueError:
-            return "Entrada Invalida"
+            flash("Entrada Invalida")
 
     return render_template("conta.html", conta = conta)
 

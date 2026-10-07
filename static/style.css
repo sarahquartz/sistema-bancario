@@ -5,6 +5,29 @@ body{
     color: darkgoldenrod
 }
 
+.inicio{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loguin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.loguin form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .conta-funcoes{
     display: flex;
     gap: 5px;

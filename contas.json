@@ -1,41 +1,26 @@
 [
     {
-        "id": 3,
-        "titular": "Sarah",
-        "saldo": 1000.0,
-        "usuario": "sarah1",
-        "senha_hash": "iasduh",
-        "extrato": [
-            "[05/10/2026 23:11] Deposito: R$: 100.00",
-            "[06/10/2026 13:31] Deposito: R$: 100.00",
-            "[06/10/2026 13:33] Deposito: R$: 100.00",
-            "[06/10/2026 13:33] Deposito: R$: 100.00",
-            "[06/10/2026 14:03] Deposito: R$: 10.00",
-            "[06/10/2026 14:05] Deposito: R$: 50.00",
-            "[06/10/2026 14:07] Deposito: R$: 50.00",
-            "[06/10/2026 14:07] Deposito: R$: 50.00",
-            "[06/10/2026 14:11] Deposito: R$: 50.00",
-            "[06/10/2026 14:11] Deposito: R$: 50.00",
-            "[06/10/2026 14:11] Deposito: R$: 50.00",
-            "[06/10/2026 14:12] Deposito: R$: 50.00",
-            "[06/10/2026 14:13] Deposito: R$: 50.00",
-            "[06/10/2026 14:14] Deposito: R$: 50.00",
-            "[06/10/2026 14:15] Deposito: R$: 50.00",
-            "[06/10/2026 14:18] Deposito: R$: 10.00",
-            "[06/10/2026 14:18] Deposito: R$: 10.00",
-            "[06/10/2026 14:18] Deposito: R$: 10.00",
-            "[06/10/2026 14:21] Deposito: R$: 10.00",
-            "[06/10/2026 14:21] Deposito: R$: 50.00"
-        ]
-    },
-    {
         "id": 4,
         "titular": "Sarah",
-        "saldo": 410.0,
+        "saldo": 150.0,
         "usuario": "sarah",
         "senha_hash": "scrypt:32768:8:1$N1A080AnPj44Owih$030bf1757f75b3f5f62fd7734e33fae740feb42f2c8464fafc242b53935becde021ba2ec2ec70dd3c3e2415cc02606fb02dc23cfc0c0d33468dcfaed6001ad16",
         "extrato": [
-            "[06/10/2026 20:29] Deposito: R$: 410.00"
+            "[06/10/2026 20:29] Deposito: R$: 410.00",
+            "[06/10/2026 21:35] Saque: R$: 410.00",
+            "[06/10/2026 21:47] Deposito: R$: 100.00",
+            "[06/10/2026 21:51] Transferencia Recebida: R$ 50.00"
+        ]
+    },
+    {
+        "id": 5,
+        "titular": "Toddy",
+        "saldo": 50.0,
+        "usuario": "tody",
+        "senha_hash": "scrypt:32768:8:1$xfN7Sf96dCy4S5QG$315f96be34669a8a06494408e10183aa155ccb4d0dc41c49c7e79e7ea4acf56f53f0f61cb0492d9282e0ebf4052ba2cd8b60bf6c8e2c9de20049851e9d8ad6f8",
+        "extrato": [
+            "[06/10/2026 21:51] Deposito: R$: 100.00",
+            "[06/10/2026 21:51] Transferencia Efetuada: R$ 50.00"
         ]
     }
 ]

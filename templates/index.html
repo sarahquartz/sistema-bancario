@@ -1,23 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
+<nav class="inicio">
+        <div class="loguin">
+        
         <h1>Sistema Bancário</h1>
         <p>Bem vindo ao Sistema!</p>
-
-        <div>
+        
+        
+        
                 <h2>Loguin</h2>
 
                 <form method="post">
 
-                        <label>Usuario</label>
-                        <input type = "text" name="usuario" required>
 
-                        <label>Senha</label>
-                        <input type="text" name="senha" required>
-
+                        <input type = "text" name="usuario" required placeholder="Usuario">
+                       
+                        <input type="password" name="senha" required placeholder="Senha">
+                
                         <button type="submit">Entrar</button>
 
                 </form>
+
+                <h2>Novo Usuario</h2>
                 <a href="{{url_for('nova_conta')}}"><button>Criar Conta</button></a>
         </div>
         {% with mensagens = get_flashed_messages() %}
@@ -28,3 +33,4 @@
                 {%endif%}
         {%endwith%}
 {% endblock %}
+</nav>

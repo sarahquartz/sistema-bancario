@@ -7,22 +7,62 @@
     <p>Saldo: {{"{:.2f}".format(conta.saldo)}}</p>
     
     <div class="conta-funcoes">
-        <button onclick="mostrarDeposito()">Depositar</button>
+        <button onclick="mostrarDeposito('deposito-form')">Depositar</button>
 
         <div id="deposito-form" class="conta-funcoes-form">
 
             <h3>Deposito</h3>
 
             <form method="POST">
+                <input type="hidden" name="acao" value="deposito">
+                <label>Valor</label>
                 <input type="number" step="0.01" name="valor">
                 <button type="submit">Confirmar</button>
             </form>
 
         </div>
 
-        <button>Sacar</button>
-        <button>Transferir</button>
+        <button onclick="mostrarDeposito('saque-form')" >Sacar</button>
+
+        <div id="saque-form" class="conta-funcoes-form">
+
+            <h3>Saque</h3>
+
+            <form method="POST">
+                <input type="hidden" name="acao" value="saque">
+                <label>Valor</label>
+                <input type="number" step="0.01" name="valor">
+                <button type="submit">Confirmar</button>
+            </form>
+
+        </div>
+
+        <button onclick="mostrarDeposito('transferir-form')" >Transferir</button>
+
+        <div id="transferir-form" class="conta-funcoes-form">
+
+            <h3>Transferencia</h3>
+
+            <form method="POST">
+                <input type="hidden" name="acao" value="transferencia">
+                <label>Conta</label>
+                <input type="text" name="destino">
+                <label>Valor</label>
+                <input type="number" step="0.01" name="valor">
+                
+                <button type="submit">Confirmar</button>
+            </form>
+
+        </div>
+
     </div>
+    {% with mensagens = get_flashed_messages() %}
+                {% if mensagens %}
+                        {% for mensagen in mensagens%}
+                        <p>{{mensagen}}</p>
+                        {%endfor%}
+                {%endif%}
+        {%endwith%}
     <div>
         <p>Extrato</p>
         <div>
@@ -31,17 +71,21 @@
             {% endfor %}
         </div>
     </div>
-    <a href="{{url_for('logout')}}"><button>Logout</button></a>
+    <a href="{{url_for('logout')}}"><button>Sair</button></a>
     <script>
-        function mostrarDeposito(){
-            let formulario = document.getElementById("deposito-form");
-            let estilo = window.getComputedStyle(formulario)
-                if (estilo.display === "none"){
-                    formulario.style.display = "block";
-                }else{
-                    formulario.style.display = "none";
-                }
+        function mostrarDeposito(form_id){
+            let formulario_selecionado = document.getElementById(form_id);
+            let aberto = formulario_selecionado.style.display === "block";
+
+            document.querySelectorAll(".conta-funcoes-form").forEach(formulario => {formulario.style.display = "none"});
+
+            if(!aberto){
+                formulario_selecionado.style.display = "block";
             }
+
+            }
+
+
 
     </script>
 {% endblock %}
